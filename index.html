@@ -1,436 +1,439 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Santosh Ter</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-	    <link rel="icon" href="pic1.jpg" type="image/x-icon">
-    <link rel="shortcut icon" href="pic1.jpg" type="image/x-icon">
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Santosh Ter</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="icon" href="pic1.jpg" type="image/x-icon" />
+    <link rel="shortcut icon" href="pic1.jpg" type="image/x-icon" />
+    
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="fontAwesome.css" />
+    <link rel="stylesheet" href="light-box.css" />
+    <link rel="stylesheet" href="templatemo-main.css" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" />
+    
+    <script src="modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
-        <link rel="stylesheet" href="bootstrap.min.css">
-        <link rel="stylesheet" href="bootstrap-theme.min.css">
-        <link rel="stylesheet" href="fontAwesome.css">
-        <link rel="stylesheet" href="light-box.css">
-        <link rel="stylesheet" href="templatemo-main.css">
+    <style>
+        /* Additional styles for smooth fade-in and hover */
 
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f9f9f9;
+            color: #333;
+        }
 
-        <script src="modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    </head>
+        nav {
+            background-color: #222;
+            color: #fff;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        nav .logo img,
+        nav .mini-logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: #eee;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            color: #F96D38;
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 100px 40px 60px;
+            background: white;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #F96D38;
+        }
+
+        .content p {
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        .main-btn, .fb-btn {
+            margin-top: 20px;
+        }
+
+        .main-btn a,
+        .fb-btn a {
+            display: inline-block;
+            padding: 10px 30px;
+            color: white;
+            background-color: #F96D38;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .main-btn a:hover,
+        .fb-btn a:hover {
+            background-color: #e2571e;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Navigation arrows for slides */
+        .nav-arrows {
+            position: fixed;
+            top: 50%;
+            width: 100%;
+            pointer-events: none;
+            z-index: 1200;
+        }
+
+        .nav-arrow {
+            pointer-events: all;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            background: rgba(249,109,56,0.8);
+            padding: 10px 15px;
+            border-radius: 50%;
+            color: white;
+            font-size: 28px;
+            user-select: none;
+            transform: translateY(-50%);
+            transition: background 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background: #e2571e;
+        }
+
+        .nav-arrow.left {
+            left: 20px;
+        }
+
+        .nav-arrow.right {
+            right: 20px;
+        }
+
+        /* Pagination dots */
+        .pagination-dots {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            z-index: 1200;
+        }
+
+        .pagination-dots span {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin: 0 7px;
+            background-color: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination-dots span.active {
+            background-color: #F96D38;
+        }
+
+        /* Contact form */
+        form {
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        form button {
+            background-color: #F96D38;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #e2571e;
+        }
+
+        footer {
+            background: #222;
+            color: #eee;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+    </style>
+</head>
 
 <body>
-    
-    <div class="sequence">
-  
-      <div class="seq-preloader">
-        <svg width="39" height="16" viewBox="0 0 39 16" xmlns="http://www.w3.org/2000/svg" class="seq-preload-indicator"><g fill="#F96D38"><path class="seq-preload-circle seq-preload-circle-1" d="M3.999 12.012c2.209 0 3.999-1.791 3.999-3.999s-1.79-3.999-3.999-3.999-3.999 1.791-3.999 3.999 1.79 3.999 3.999 3.999z"/><path class="seq-preload-circle seq-preload-circle-2" d="M15.996 13.468c3.018 0 5.465-2.447 5.465-5.466 0-3.018-2.447-5.465-5.465-5.465-3.019 0-5.466 2.447-5.466 5.465 0 3.019 2.447 5.466 5.466 5.466z"/><path class="seq-preload-circle seq-preload-circle-3" d="M31.322 15.334c4.049 0 7.332-3.282 7.332-7.332 0-4.049-3.282-7.332-7.332-7.332s-7.332 3.283-7.332 7.332c0 4.05 3.283 7.332 7.332 7.332z"/></g></svg>
-      </div>
-      
+
+<nav>
+    <div class="logo">
+        <img src="slogo.png" alt="Santosh Logo" />
     </div>
-    
-  
-        <nav>
-          <div class="logo">
-              <img src="slogo.png" alt="">
-          </div>
-          <div class="mini-logo">
-              <img src="slogo.png" alt="">
-          </div>
-          <ul>
-            <li><a href="#1"><i class="fa fa-home"></i> <em>Home</em></a></li>
-            <li><a href="#2"><i class="fa fa-user"></i> <em>About</em></a></li>
-            <li><a href="#3"><i class="fa fa-pencil"></i> <em>Friendship</em></a></li>
-            <li><a href="#4"><i class="fa fa-image"></i> <em>Work</em></a></li>
-            <li><a href="#5"><i class="fa fa-envelope"></i> <em>Contact</em></a></li>
-          </ul>
-        </nav>
-        
-        <div class="slides">
-          <div class="slide" id="1">
-            <div class="content first-content">
-              <div class="container-fluid">
-                  <div class="col-md-3">
-                      <div class="author-image"><img src="pic1.jpg" alt="Author Image"></div>
-                  </div>
-                  <div class="col-md-9">
-                      <h2>Santosh Ter</h2>
-                      <p>Hy there im <strong><a rel="nofollow" href="https://www.facebook.com/profile.php?id=100074248537205">Santosh Ter</a></strong>  
-                       From Heaven. soo don't tyr to contect me bcz im very hanxom or i can do nothing for you soo keep distance.</p>
-                      <div class="main-btn"><a href="#2">Read More</a></div>
-                      <div class="fb-btn"><a rel="nofollow" href="https://www.facebook.com/profile.php?id=100074248537205">Our FB Page</a></div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide" id="2">
-            <div class="content second-content">
-                <div class="container-fluid">
-                    <div class="col-md-6">
-                        <div class="left-content">
-                            <h2>About Us</h2>
-                            <p>You can't track me</p>
-                            <p>You are just a looser</p>
-                            <p>Toh chaliye aage badte hai jaan k v kya krloge aap</p>
-                          <div class="main-btn"><a href="#3">Read More</a></div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="right-image">
-                          <img src="pic5.jpg" alt="">
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-          <div class="slide" id="3">
-            <div class="content third-content">
-                <div class="container-fluid">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="first-section">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="left-content">
-                                                <h2>Everything is esy</h2>
-                                                <p>This phrase conveys the idea that any task or situation can be dealt with easily or managed effortlessly. It implies that despite challenges or complexities, there is always a way to simplify things and find solutions.
+    <ul>
+        <li><a href="#1"><i class="fa fa-home"></i> <em>Home</em></a></li>
+        <li><a href="#2"><i class="fa fa-user"></i> <em>About</em></a></li>
+        <li><a href="#3"><i class="fa fa-pencil"></i> <em>Friendship</em></a></li>
+        <li><a href="#4"><i class="fa fa-image"></i> <em>Work</em></a></li>
+        <li><a href="#5"><i class="fa fa-envelope"></i> <em>Contact</em></a></li>
+    </ul>
+</nav>
 
-                                                    This expression is commonly used in Nepali language and reflects a mindset of optimism, resilience, and resourcefulness. It suggests a positive attitude towards facing challenges and encourages individuals to approach tasks with confidence and ease.</p>
-                                                <div class="main-btn"><a href="#4">Continue Reading</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="right-image">
-                                                <img src="pic6.jpg" alt="first service">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="second-section">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="left-image">
-                                                <img src="pic7.jpg" alt="second service">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="right-content">
-                                                <h2>Bestfriends</h2>
-                                                <p>Friends are like the shining stars in the sky of our lives, illuminating our darkest nights with their warmth and guidance. They are the pillars of support, the laughter in our joys, and the comforting presence in our sorrows.
+<div class="slides">
 
-                                                    A true friend is a treasure beyond measure, someone who knows our flaws yet sees the beauty within us. They stand by us through thick and thin, offering a shoulder to lean on and a hand to hold during life's unpredictable journey.
-                                                    
-                                                    Friendship is a sanctuary where we can be our authentic selves without fear of judgment or pretense.<br><br>
-                                                    <br> It's a bond forged through shared experiences, mutual respect, and unconditional acceptance.
-                                                    
-                                                    Friends lift us up when we are down, celebrate our successes with genuine joy, and share in our dreams and aspirations. They inspire us to be better, to reach for the stars, and to never give up on ourselves or each other.</p>
-                                                <div class="main-btn"><a href="#4">Continue Reading</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Slide 1 -->
+    <section class="slide active" id="1">
+        <div class="content first-content container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="author-image">
+                        <img src="pic1.jpg" alt="Santosh Ter" />
                     </div>
                 </div>
-            </div>
-          </div>
-          <div class="slide" id="4">
-            <div class="content fourth-content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="img/" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Number One</h2>
-                                            <p>Quisque sit amet lacus in diam pretium faucibus. Cras vel justo lorem.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="first_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="second_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Number Two</h2>
-                                            <p>Donec eget dictum tellus. Curabitur a interdum diam. Nulla vestibulum porttitor porta.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="second_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="third_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Number Three</h2>
-                                            <p>Cras varius dolor et augue fringilla, eu commodo sapien iaculis.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="third_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="fourth_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Number Four</h2>
-                                            <p>Vestibulum augue ex, finibus sit amet nisi id, maximus ultrices ipsum.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="fourth_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="fifth_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Fifth Item</h2>
-                                            <p>Donec commodo, ex nec rutrum venenatis, nisi nisl malesuada magna.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="fifth_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="sixth_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Sixth Item</h2>
-                                            <p>Maecenas dapibus neque sed nisl consectetur, id semper nisi egestas.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="sixth_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="seventh_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Number Seven</h2>
-                                            <p>Etiam aliquet, est id varius fringilla, eros libero pellentesque lectus.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="seventh_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="eight_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Number Eight</h2>
-                                            <p>Vestibulum augue ex, finibus sit amet nisi id, maximus ultrices ipsum.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="eight_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="ninth_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Number Nine</h2>
-                                            <p>Orci varius natoque penatibus et magnis dis parturient montes.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="ninth_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="fifth_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Number Ten</h2>
-                                            <p>Vestibulum augue ex, finibus sit amet nisi id, maximus ultrices ipsum.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="fifth_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="first_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Eleventh Item</h2>
-                                            <p>Cras varius dolor et augue fringilla, eu commodo sapien iaculis.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="first_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="second_big_item.jpg" data-lightbox="image-1"><div class="hover-effect">
-                                        <div class="hover-content">
-                                            <h2>Twelvth Item</h2>
-                                            <p>Etiam tincidunt magna ex, sit amet lobortis felis bibendum id.</p>
-                                        </div>
-                                    </div></a>
-                                    <div class="image">
-                                        <img src="second_item.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-9">
+                    <h2>Santosh Ter</h2>
+                    <p>Hi there! I'm <strong><a rel="nofollow" href="https://www.facebook.com/profile.php?id=100074248537205">Santosh Ter</a></strong> from Heaven. So don't try to contact me because I'm very handsome or I can't do anything for you, so please keep distance.</p>
+                    <div class="main-btn"><a href="#2">Read More</a></div>
+                    <div class="fb-btn"><a rel="nofollow" href="https://www.facebook.com/profile.php?id=100074248537205">Our FB Page</a></div>
                 </div>
             </div>
-          </div>
-          <div class="slide" id="5">
-            <div class="content fifth-content">
-                <div class="container-fluid">
-                    <div class="col-md-6">
-                        <div id="map">
-    <!-- How to change your own map point
-            1. Go to Google Maps
-            2. Click on your location point
-            3. Click "Share" and choose "Embed map" tab
-            4. Copy only URL and paste it within the src="" field below
-	-->
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.3030413476204!2d100.5641230193719!3d13.757206847615207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf51ce6427b7918fc!2sG+Tower!5e0!3m2!1sen!2sth!4v1510722015945" width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <form id="contact" action="" method="post">
-                            <div class="row">
-                                <div class="col-md-12">
-                                  <fieldset>
-                                    <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
-                                  </fieldset>
-                                </div>
-                                <div class="col-md-12">
-                                  <fieldset>
-                                    <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
-                                  </fieldset>
-                                </div>
-                                 <div class="col-md-12">
-                                  <fieldset>
-                                    <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..." required="">
-                                  </fieldset>
-                                </div>
-                                <div class="col-md-12">
-                                  <fieldset>
-                                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
-                                  </fieldset>
-                                </div>
-                                <div class="col-md-12">
-                                  <fieldset>
-                                    <button type="submit" id="form-submit" class="btn">Send Now</button>
-                                  </fieldset>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-          </div>
         </div>
+    </section>
 
-        <div class="footer">
-          <div class="content">
-              <p>Copyright &copy; Santoshter.com.np . Design : <a rel="nofollow" href="https://manojmahara.com.np/">Manoj Mahara</a></p>
-          </div>
+    <!-- Slide 2 -->
+    <section class="slide" id="2">
+        <div class="content second-content container-fluid">
+            <div class="row">
+                <div class="col-md-6 left-content">
+                    <h2>About Us</h2>
+                    <p>You can't track me.</p>
+                    <p>You are just a loser.</p>
+                    <p>Toh chaliye aage badte hai jaan k v kya krloge aap.</p>
+                    <div class="main-btn"><a href="#3">Read More</a></div>
+                </div>
+                <div class="col-md-6 right-image">
+                    <img src="pic5.jpg" alt="About Image" />
+                </div>
+            </div>
         </div>
- 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    </section>
 
-    <script src="jvendor/bootstrap.min.js"></script>
-    
-    <script src="datepicker.js"></script>
-    <script src="plugins.js"></script>
-    <script src="main.js"></script>
+    <!-- Slide 3 -->
+    <section class="slide" id="3">
+        <div class="content third-content container-fluid">
+            <div class="first-section row">
+                <div class="col-md-6 left-content">
+                    <h2>Everything is easy</h2>
+                    <p>This phrase conveys the idea that any task or situation can be dealt with easily or managed effortlessly. It implies that despite challenges or complexities, there is always a way to simplify things and find solutions.</p>
+                    <p>This expression is commonly used in Nepali language and reflects a mindset of optimism, resilience, and resourcefulness. It suggests a positive attitude towards facing challenges and encourages individuals to approach tasks with confidence and ease.</p>
+                    <div class="main-btn"><a href="#4">Continue Reading</a></div>
+                </div>
+                <div class="col-md-6 right-image">
+                    <img src="pic6.jpg" alt="Everything is easy" />
+                </div>
+            </div>
 
-    <script type="javascript">
-    $(document).ready(function() {
+            <div class="second-section row mt-5">
+                <div class="col-md-6 left-image">
+                    <img src="pic7.jpg" alt="Bestfriends" />
+                </div>
+                <div class="col-md-6 right-content">
+                    <h2>Bestfriends</h2>
+                    <p>Friends are like the shining stars in the sky of our lives, illuminating our darkest nights with their warmth and guidance. They are the pillars of support, the laughter in our joys, and the comforting presence in our sorrows.</p>
+                    <p>A true friend is a treasure beyond measure, someone who knows our flaws yet sees the beauty within us. They stand by us through thick and thin, offering a shoulder to lean on and a hand to hold during life's unpredictable journey.</p>
+                    <p>Friendship is a sanctuary where we can be our authentic selves without fear of judgment or pretense.<br><br>It's a bond forged through shared experiences, mutual respect, and unconditional acceptance.</p>
+                    <p>Friends lift us up when we are down, celebrate our successes with genuine joy, and share in our dreams and aspirations. They inspire us to be better, to reach for the stars, and to never give up on ourselves or each other.</p>
+                    <div class="main-btn"><a href="#4">Continue Reading</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        
+    <!-- Slide 4 -->
+    <section class="slide" id="4">
+        <div class="content fourth-content container-fluid">
+            <div class="row">
+                <!-- Item example -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="item">
+                        <div class="thumb">
+                            <a href="img/first_big_item.jpg" data-lightbox="image-1">
+                                <div class="hover-effect">
+                                    <div class="hover-content">
+                                        <h2>Number One</h2>
+                                        <p>Quisque sit amet lacus in diam pretium faucibus. Cras vel justo lorem.</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="image">
+                                <img src="first_item.jpg" alt="Number One" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        // navigation click actions 
-        $('.scroll-link').on('click', function(event){
-            event.preventDefault();
-            var sectionID = $(this).attr("data-id");
-            scrollToID('#' + sectionID, 750);
+                <!-- Add more items here similarly... -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5 - Contact -->
+    <section class="slide" id="5">
+        <div class="content fifth-content container-fluid">
+            <h2>Contact Me</h2>
+            <p>Feel free to drop a message below.</p>
+            <form id="contactForm" action="#" method="post" onsubmit="return validateForm();">
+                <input type="text" name="name" id="name" placeholder="Your Name" required />
+                <input type="email" name="email" id="email" placeholder="Your Email" required />
+                <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+</div>
+
+<!-- Navigation arrows -->
+<div class="nav-arrows">
+    <div class="nav-arrow left" id="prevSlide">&#10094;</div>
+    <div class="nav-arrow right" id="nextSlide">&#10095;</div>
+</div>
+
+<!-- Pagination dots -->
+<div class="pagination-dots" id="paginationDots"></div>
+
+<footer>
+    &copy; 2025 Santosh Ter. All rights reserved. | Follow me on 
+    <a href="https://www.facebook.com/profile.php?id=100074248537205" target="_blank" style="color:#F96D38;">Facebook</a>
+</footer>
+
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="jquery.lightbox.js"></script>
+
+<script>
+    // Slide navigation script
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    const paginationDots = document.getElementById('paginationDots');
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
         });
-        // scroll to top action
-        $('.scroll-top').on('click', function(event) {
-            event.preventDefault();
-            $('html, body').animate({scrollTop:0}, 'slow');         
+        currentSlide = index;
+        updatePagination();
+        // Scroll to top smoothly
+        window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function updatePagination() {
+        paginationDots.innerHTML = '';
+        slides.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.className = i === currentSlide ? 'active' : '';
+            dot.addEventListener('click', () => showSlide(i));
+            paginationDots.appendChild(dot);
         });
-        // mobile nav toggle
-        $('#nav-toggle').on('click', function (event) {
-            event.preventDefault();
-            $('#main-nav').toggleClass("open");
-        });
-    });
-    // scroll function
-    function scrollToID(id, speed){
-        var offSet = 0;
-        var targetOffset = $(id).offset().top - offSet;
-        var mainNav = $('#main-nav');
-        $('html,body').animate({scrollTop:targetOffset}, speed);
-        if (mainNav.hasClass("open")) {
-            mainNav.css("height", "1px").removeClass("in").addClass("collapse");
-            mainNav.removeClass("open");
+    }
+
+    prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+    // Initialize pagination and show first slide
+    updatePagination();
+    showSlide(0);
+
+    // Contact form validation (basic)
+    function validateForm() {
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !message) {
+            alert('Please fill all fields.');
+            return false;
         }
+        // Basic email pattern check
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address.');
+            return false;
+        }
+        alert('Thank you for your message, ' + name + '!');
+        return true; // In real use, handle submission or AJAX here
     }
-    if (typeof console === "undefined") {
-        console = {
-            log: function() { }
-        };
-    }
-    </script>
+</script>
+
+<script src="templatemo-custom.js"></script>
+
 </body>
 </html>
