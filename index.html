@@ -7,6 +7,144 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    nav {
+      background: #222;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo img, nav .mini-logo img {
+      height: 40px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #f96d38;
+    }
+    .slides {
+      scroll-behavior: smooth;
+    }
+    .slide {
+      padding: 60px 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .content {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .content h2 {
+      font-size: 32px;
+      color: #f96d38;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .main-btn, .fb-btn {
+      margin-top: 20px;
+      display: inline-block;
+    }
+    .main-btn a, .fb-btn a {
+      background-color: #f96d38;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .main-btn a:hover, .fb-btn a:hover {
+      background-color: #d15522;
+    }
+    .thumb img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .hover-effect {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .thumb:hover .hover-effect {
+      opacity: 1;
+    }
+    form input, form textarea {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+    form button {
+      background-color: #f96d38;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #d15522;
+    }
+    .footer {
+      background: #222;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+    }
+    .footer a {
+      color: #f96d38;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
 
@@ -18,7 +156,7 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="logo">
-      <img src="images/slogo.png" alt="Logo">
+      <img src="slogo.png" alt="Logo">
     </div>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
@@ -35,7 +173,7 @@
   <!-- Home Section -->
   <main id="home" class="section" data-aos="fade-up">
     <div class="intro">
-      <img src="images/pic1.jpg" alt="Santosh Ter">
+      <img src="pic1.jpg" alt="Santosh Ter">
       <h1>Santosh Ter</h1>
       <p>Hello! I'm <a href="https://www.facebook.com/profile.php?id=100074248537205" target="_blank">Santosh Ter</a>. Creative thinker, lover of simplicity, and authentic by nature.</p>
       <a href="#about" class="btn btn-primary">Read More</a>
@@ -49,7 +187,7 @@
       <h2>About Me</h2>
       <p>I prefer to stay behind the scenes. My life is a bit of a mystery. You can still know me through my work.</p>
       <a href="#friendship" class="btn btn-secondary">Learn More</a>
-      <img src="images/pic5.jpg" alt="About">
+      <img src="pic5.jpg" alt="About">
     </div>
   </section>
 
@@ -60,12 +198,12 @@
         <h2>Everything is Easy</h2>
         <p>With the right mindset, anything is possible. Optimism and resilience define the way forward.</p>
       </div>
-      <img src="images/pic6.jpg" alt="Motivational">
+      <img src="pic6.jpg" alt="Motivational">
       <div class="content-block">
         <h2>Best Friends</h2>
         <p>Friends are the stars—always present. They uplift and guide us through life’s journey.</p>
       </div>
-      <img src="images/pic7.jpg" alt="Friendship">
+      <img src="pic7.jpg" alt="Friendship">
     </div>
   </section>
 
@@ -74,8 +212,8 @@
     <h2>My Projects</h2>
     <div class="projects">
       <div class="project">
-        <a href="images/first_big_item.jpg" target="_blank">
-          <img src="images/first_item.jpg" alt="Project One">
+        <a href="first_big_item.jpg" target="_blank">
+          <img src="first_item.jpg" alt="Project One">
           <div class="project-info">
             <h3>Project One</h3>
             <p>Creative design with performance focus.</p>
@@ -114,7 +252,7 @@
       document.head.appendChild(fallbackScript);
     }
   </script>
-  <script src="vendor/bootstrap.min.js" defer></script>
+  <script src="bootstrap.min.js" defer></script>
   <script src="datepicker.js" defer></script>
   <script src="plugins.js" defer></script>
   <script src="main.js" defer></script>
