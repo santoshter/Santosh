@@ -77,11 +77,25 @@
         border-radius: 6px;
         text-decoration: none;
         font-weight: bold;
-        margin-top: 20px;
-        transition: background 0.3s;
+        margin-top: 40px;
+        display: inline-block;
+        transition: background 0.3s, transform 0.3s;
+        animation: fadeInUp 1s ease;
       }
       .btn:hover {
         background: #d15522;
+        transform: scale(1.05);
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .section-header {
@@ -172,25 +186,29 @@
     <main>
       <!-- JavaScript-based Zapier Webhook Notification -->
       <script>
-        fetch("https://hooks.zapier.com/hooks/catch/your-real-zap-id", {
+        fetch("https://hooks.zapier.com/hooks/catch/23144736/2vbfijl/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ event: "site_visit", email: "tersantosh049@gmail.com", time: new Date().toISOString() })
+          body: JSON.stringify({
+            event: "site_visit",
+            email: "tersantosh049@gmail.com",
+            time: new Date().toISOString()
+          })
         });
       </script>
 
       <!-- Welcome/Landing Section -->
-      <section id="landing">
+      <section id="landing" data-aos="fade-in">
         <div class="content">
+          <img src="welcome.jpg" alt="Santosh Ter" class="responsive" style="border-radius: 50%; width: 150px; margin-top: 20px;" />
           <h1>Hello, I'm Santosh Ter</h1>
           <p>A student learning web development and creative design. Welcome to my portfolio site!</p>
-          <img src="welcome.jpg" alt="Santosh Ter" class="responsive" style="border-radius: 50%; width: 150px; margin-top: 20px;" />
           <a href="#home" class="btn">Learn More</a>
         </div>
       </section>
 
       <!-- Home Section -->
-      <section id="home" style="display: none;">
+      <section id="home" style="display: none;" data-aos="fade-up">
         <h2 class="section-header">Welcome to My World</h2>
         <div class="content">
           <p>I'm Santosh Ter, a passionate learner in web development and creative design...</p>
@@ -203,7 +221,7 @@
       </section>
 
       <!-- About Section -->
-      <section id="about" style="display: none;">
+      <section id="about" style="display: none;" data-aos="fade-up">
         <h2 class="section-header">About Me</h2>
         <div class="content">
           <p>I’m currently a student exploring the world of web development...</p>
@@ -211,7 +229,7 @@
       </section>
 
       <!-- Friendship Section -->
-      <section id="friends" style="display: none;">
+      <section id="friends" style="display: none;" data-aos="fade-up">
         <h2 class="section-header">My Circle of Friends</h2>
         <div class="content">
           <p>Because support makes everything possible!</p>
@@ -246,8 +264,14 @@
     <!-- Scroll to Top Button -->
     <button id="scrollTopBtn" title="Go to top">↑</button>
 
-    <!-- JavaScript for Navigation and Scroll Handling -->
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+
       const scrollTopBtn = document.getElementById("scrollTopBtn");
       const landingSection = document.getElementById("landing");
       const homeSection = document.getElementById("home");
