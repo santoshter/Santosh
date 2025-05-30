@@ -1,323 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Metadata and External Styles -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Santosh Ter | Student & Creative Explorer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <meta name="description" content="Portfolio of Santosh Ter — A student exploring web development and design." />
-    <meta property="og:title" content="Santosh Ter | Student Portfolio" />
-    <meta property="og:image" content="preview.jpg" />
-    <meta property="og:description" content="A showcase of Santosh Ter's journey in learning web design and development." />
-
-    <!-- Internal CSS Styling -->
-    <style>
-      :root {
-        --primary: #f96d38;
-        --dark: #222;
-        --light: #fdfdfd;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: var(--light);
-        color: #333;
-        scroll-behavior: smooth;
-        line-height: 1.6;
-      }
-
-      /* Header styles */
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santosh Ter | Creative Web Developer</title>
+  <meta name="description" content="Portfolio of Santosh Ter — A creative student exploring web development and design." />
+  <meta property="og:title" content="Santosh Ter Portfolio" />
+  <meta property="og:image" content="preview.jpg" />
+  <meta property="og:description" content="Explore the creative journey of Santosh Ter through web design and development projects." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    :root {
+      --primary: #f96d38;
+      --dark: #111;
+      --light: #fdfdfd;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light);
+      color: #333;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+    header {
+      background-color: var(--dark);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+    main section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .btn {
+      background: var(--primary);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: background 0.3s, transform 0.3s;
+      animation: fadeInUp 1s ease;
+      margin-top: 40px;
+    }
+    .btn:hover {
+      background: #d15522;
+      transform: scale(1.05);
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .section-header {
+      font-size: 2.5em;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .responsive {
+      max-width: 100%;
+      height: auto;
+    }
+    .tech-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .tech-icons i {
+      font-size: 40px;
+      color: #444;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .tech-icons i:hover {
+      transform: scale(1.2);
+      color: var(--primary);
+    }
+    footer {
+      background: var(--dark);
+      color: #ccc;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    footer i {
+      font-size: 24px;
+      margin: 0 10px;
+      color: var(--primary);
+    }
+    footer i:hover {
+      color: #fff;
+    }
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 100;
+      font-size: 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #scrollTopBtn:hover {
+      background: #d15522;
+    }
+    @media (max-width: 768px) {
       header {
-        background-color: var(--dark);
-        color: white;
-        padding: 15px 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
+        flex-direction: column;
+        align-items: flex-start;
       }
-
       nav ul {
-        display: flex;
-        list-style: none;
-        gap: 20px;
+        flex-direction: column;
+        gap: 10px;
       }
-      nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s;
-      }
-      nav ul li a.active {
-        color: var(--primary);
-      }
-      nav ul li a:hover {
-        color: var(--primary);
-      }
-
-      /* Main section styling */
-      main section {
-        padding: 80px 20px;
-        text-align: center;
-      }
-
-      .btn {
-        background: var(--primary);
-        color: white;
-        padding: 12px 25px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 40px;
-        display: inline-block;
-        transition: background 0.3s, transform 0.3s;
-        animation: fadeInUp 1s ease;
-      }
-      .btn:hover {
-        background: #d15522;
-        transform: scale(1.05);
-      }
-
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
       .section-header {
-        font-size: 2.5em;
-        color: var(--primary);
-        margin-bottom: 20px;
+        font-size: 2em;
       }
-
-      .responsive {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .tech-icons {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-top: 20px;
+      .btn {
+        width: 90%;
       }
       .tech-icons i {
-        font-size: 40px;
-        color: #444;
-        transition: transform 0.3s, color 0.3s;
+        font-size: 30px;
       }
-      .tech-icons i:hover {
-        transform: scale(1.2);
-        color: var(--primary);
+    }
+    @media (max-width: 480px) {
+      .section-header {
+        font-size: 1.7em;
       }
-
-      /* Footer styles */
+      .btn {
+        font-size: 0.95em;
+        padding: 10px 18px;
+      }
       footer {
-        background: var(--dark);
-        color: #ccc;
-        text-align: center;
-        padding: 25px 15px;
-        font-size: 0.9rem;
+        font-size: 0.8em;
       }
-      footer a {
-        color: var(--primary);
-        text-decoration: none;
-      }
-      footer a:hover {
-        text-decoration: underline;
-      }
-      footer i {
-        font-size: 24px;
-        margin: 0 10px;
-        color: var(--primary);
-      }
-      footer i:hover {
-        color: #fff;
-      }
-
-      #scrollTopBtn {
-        display: none;
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 100;
-        font-size: 24px;
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-      #scrollTopBtn:hover {
-        background: #d15522;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Header and Navigation -->
-    <header>
-      <div class="logo">Santosh Ter</div>
-      <nav>
-        <ul>
-          <li><a href="#home" id="navHome">Home</a></li>
-          <li><a href="#about" id="navAbout">About</a></li>
-          <li><a href="#friends" id="navFriends">Friendship</a></li>
-          <li><a href="mailto:player70pro@gmail.com" id="navContact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <!-- JavaScript-based Zapier Webhook Notification -->
-      <script>
-        fetch("https://hooks.zapier.com/hooks/catch/23144736/2vbfijl/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            event: "site_visit",
-            email: "tersantosh049@gmail.com",
-            time: new Date().toISOString()
-          })
-        });
-      </script>
-
-      <!-- Welcome/Landing Section -->
-      <section id="landing" data-aos="fade-in">
-        <div class="content">
-          <img src="welcome.jpg" alt="Santosh Ter" class="responsive" style="border-radius: 50%; width: 150px; margin-top: 20px;" />
-          <h1>Hello, I'm Santosh Ter</h1>
-          <p>A student learning web development and creative design. Welcome to my portfolio site!</p>
-          <a href="#home" class="btn">Learn More</a>
-        </div>
-      </section>
-
-      <!-- Home Section -->
-      <section id="home" style="display: none;" data-aos="fade-up">
-        <h2 class="section-header">Welcome to My World</h2>
-        <div class="content">
-          <p>I'm Santosh Ter, a passionate learner in web development and creative design...</p>
-          <div class="tech-icons">
-            <i class="fab fa-html5" title="HTML5"></i>
-            <i class="fab fa-css3-alt" title="CSS3"></i>
-            <i class="fab fa-js" title="JavaScript"></i>
-          </div>
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <section id="about" style="display: none;" data-aos="fade-up">
-        <h2 class="section-header">About Me</h2>
-        <div class="content">
-          <p>I’m currently a student exploring the world of web development...</p>
-        </div>
-      </section>
-
-      <!-- Friendship Section -->
-      <section id="friends" style="display: none;" data-aos="fade-up">
-        <h2 class="section-header">My Circle of Friends</h2>
-        <div class="content">
-          <p>Because support makes everything possible!</p>
-          <div class="tech-icons">
-            <div>
-              <h3>Friend 1</h3>
-              <p>A great support system.</p>
-            </div>
-            <div>
-              <h3>Friend 2</h3>
-              <p>Always there in times of need.</p>
-            </div>
-            <div>
-              <h3>Friend 3</h3>
-              <p>Learning and growing together.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer Section -->
-    <footer>
-      <p>&copy; 2025 Santosh Ter. All rights reserved.</p>
-      <div>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Santosh Ter</div>
+    <nav>
+      <ul>
+        <li><a href="#home" id="navHome">Home</a></li>
+        <li><a href="#about" id="navAbout">About</a></li>
+        <li><a href="#friends" id="navFriends">Friendship</a></li>
+        <li><a href="mailto:player70pro@gmail.com" id="navContact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="landing" data-aos="fade-in">
+      <img src="welcome.jpg" alt="Santosh Ter" class="responsive" style="border-radius: 50%; width: 150px; margin-top: 20px;" />
+      <h1>Hello, I'm Santosh Ter</h1>
+      <p>A student learning web development and creative design. Welcome to my portfolio site!</p>
+      <a href="#home" class="btn">Learn More</a>
+    </section>
+    <section id="home" style="display: none;" data-aos="fade-up">
+      <h2 class="section-header">Welcome to My World</h2>
+      <p>Here are a few tools I use in development:</p>
+      <div class="tech-icons">
+        <i class="fab fa-html5" title="HTML5"></i>
+        <i class="fab fa-css3-alt" title="CSS3"></i>
+        <i class="fab fa-js" title="JavaScript"></i>
       </div>
-    </footer>
+    </section>
+    <section id="about" style="display: none;" data-aos="fade-up">
+      <h2 class="section-header">About Me</h2>
+      <p>I'm currently a student exploring the world of web development. I enjoy building things for the web and improving my creative and coding skills every day.</p>
+    </section>
+    <section id="friends" style="display: none;" data-aos="fade-up">
+      <h2 class="section-header">My Circle of Friends</h2>
+      <div class="tech-icons" style="flex-direction: column; align-items: center;">
+        <div><h3>Friend 1</h3><p>A great support system.</p></div>
+        <div><h3>Friend 2</h3><p>Always there in times of need.</p></div>
+        <div><h3>Friend 3</h3><p>Learning and growing together.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Santosh Ter. All rights reserved.</p>
+    <div>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
+  <button id="scrollTopBtn" title="Go to top">↑</button>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollTopBtn" title="Go to top">↑</button>
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    const sections = {
+      landing: document.getElementById("landing"),
+      home: document.getElementById("home"),
+      about: document.getElementById("about"),
+      friends: document.getElementById("friends")
+    };
+    const navLinks = {
+      home: document.getElementById("navHome"),
+      about: document.getElementById("navAbout"),
+      friends: document.getElementById("navFriends")
+    };
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 1000,
-        once: true
-      });
+    function showSection(section) {
+      Object.keys(sections).forEach(id => sections[id].style.display = (id === section ? "block" : "none"));
+      Object.keys(navLinks).forEach(id => navLinks[id].classList.toggle("active", id === section));
+    }
 
-      const scrollTopBtn = document.getElementById("scrollTopBtn");
-      const landingSection = document.getElementById("landing");
-      const homeSection = document.getElementById("home");
-      const aboutSection = document.getElementById("about");
-      const friendsSection = document.getElementById("friends");
-
-      const navHome = document.getElementById("navHome");
-      const navAbout = document.getElementById("navAbout");
-      const navFriends = document.getElementById("navFriends");
-
-      function showSection(section) {
-        landingSection.style.display = "none";
-        homeSection.style.display = section === "home" ? "block" : "none";
-        aboutSection.style.display = section === "about" ? "block" : "none";
-        friendsSection.style.display = section === "friends" ? "block" : "none";
-
-        navHome.classList.toggle("active", section === "home");
-        navAbout.classList.toggle("active", section === "about");
-        navFriends.classList.toggle("active", section === "friends");
-      }
-
-      navHome.addEventListener("click", function (e) {
+    Object.entries(navLinks).forEach(([id, link]) => {
+      link.addEventListener("click", e => {
         e.preventDefault();
-        showSection("home");
-        homeSection.scrollIntoView({ behavior: "smooth" });
+        showSection(id);
+        sections[id].scrollIntoView({ behavior: "smooth" });
       });
+    });
 
-      navAbout.addEventListener("click", function (e) {
-        e.preventDefault();
-        showSection("about");
-        aboutSection.scrollIntoView({ behavior: "smooth" });
+    scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    window.onscroll = () => scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+
+    try {
+      fetch("https://hooks.zapier.com/hooks/catch/23144736/2vuk0sq/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event: "site_visit",
+          email: "tersantosh049@gmail.com",
+          time: new Date().toISOString()
+        })
       });
-
-      navFriends.addEventListener("click", function (e) {
-        e.preventDefault();
-        showSection("friends");
-        friendsSection.scrollIntoView({ behavior: "smooth" });
-      });
-
-      scrollTopBtn.onclick = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      };
-
-      window.onscroll = () => {
-        scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-      };
-    </script>
-  </body>
+    } catch (error) {
+      console.error("Zapier webhook failed:", error);
+    }
+  </script>
+</body>
 </html>
